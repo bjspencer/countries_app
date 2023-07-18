@@ -8,7 +8,7 @@ function SearchBar({ handleSearch }) {
       <TextField
         label="Search for a country..."
         variant="outlined"
-        inputProps={{
+        InputProps={{
           startAdornment: (
             <InputAdornment position="start">
               <SearchIcon />

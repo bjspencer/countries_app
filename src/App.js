@@ -36,16 +36,16 @@ function App() {
           padding: "0.5em",
         }}
       >
-        <Box sx={{ display: "flex" }}>
-          <SearchBar id="search-bar" handleSearch={handleSearch} />
-        </Box>
-        <Grid container spacing={3}>
-          {filteredCountries.map((country) => (
-            <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
-              <CountryCard country={country} />
-            </Grid>
-          ))}
-        </Grid>
+        <SearchBar handleSearch={handleSearch} />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Grid container spacing={3}>
+            {filteredCountries.map((country) => (
+              <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
+                <CountryCard country={country} />
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </Box>
     </div>
   );
