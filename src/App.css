@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  background: #fafafa;
 }
 
 .App-logo {
@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+/* body {
+  width: 90rem;
+  height: 64rem;
+  flex-shrink: 0;
+} */
