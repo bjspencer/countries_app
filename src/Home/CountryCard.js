@@ -14,7 +14,7 @@ function CountryCard({ country }) {
         <CardMedia
           component="img"
           height="140"
-          image={country.flags.svg}
+          image={country.flags[0]}
           alt={country.flags.alt}
         />
         <CardContent>
@@ -22,7 +22,7 @@ function CountryCard({ country }) {
             {country.name.common}
           </Typography>
           <Typography variant="body2" color="text.primary">
-            <b>Population:</b> {country.population}
+            <b>Population:</b> {country.population.toLocaleString()}
           </Typography>
           <Typography variant="body2" color="text.primary">
             <b>Region:</b> {country.region}

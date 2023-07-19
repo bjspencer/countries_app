@@ -3,50 +3,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CountryCard from "./Home/CountryCard";
 import TitleBar from "./Home/TitleBar";
-import { Grid, Box } from "@mui/material";
-import SearchBar from "./Home/SearchBar";
+import CountryDetails from "./Details/CountryDetails";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CountryList from "./Home/CountryList";
 
 function App() {
-  const [countries, setCountries] = useState([]);
-  const [filteredCountries, setFilteredCountries] = useState([]);
-
-  const getCountries = () => {
-    axios.get("https://restcountries.com/v3.1/all").then((response) => {
-      setCountries(response.data);
-      setFilteredCountries(response.data);
-    });
-  };
-
-  useEffect(() => {
-    getCountries();
-  }, []);
-
-  const handleSearch = (searchQuery) => {
-    const filtered = countries.filter((country) =>
-      country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredCountries(filtered);
-  };
-
   return (
     <div className="App">
       <TitleBar />
-      <Box
-        sx={{
-          padding: "0.5em",
-        }}
-      >
-        <SearchBar handleSearch={handleSearch} />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Grid container spacing={3}>
-            {filteredCountries.map((country) => (
-              <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
-                <CountryCard country={country} />
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </Box>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<CountryList />} />
+          <Route path="/country/:countryName" element={<CountryDetails />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
